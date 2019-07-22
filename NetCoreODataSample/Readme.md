@@ -31,7 +31,9 @@
           
 * Step 4: Add [EnableQuery()] annotation on top of your Action Method for your endpoint where you want to implement OData query feature.:
 
+## Run the project in the current directory:
 
+dotnet run
 
 ## OData Endpoints with different supported filters (Expand(), Select(), OrderBy(), Filter())
 

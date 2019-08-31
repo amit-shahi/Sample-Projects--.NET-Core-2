@@ -1,0 +1,47 @@
+<h3>ToDo List</h3>
+<section class="inputarea">
+        <form name="formTodos" action="" method="POST" enctype="multipart/form-data">
+            <div class="row">
+                    <div class="col-md-10">
+                            <label for="workTodo">Add An Item <span class="text-muted"></span></label>
+                            <input type="text" class="form-control capitalize" id="workTodo" name="workTodo" [(ngModel)]="workTodo" placeholder="Enter An Item Name" (keyup.escape)="cancelEdit()" maxlength="80"  required autofocus>  
+                            
+                    </div>
+                    <div class="col-md-2">
+                            <label>&nbsp;</label> 
+                            <button class="btn btn-primary btn-md btn-block" (click)="addEditTodo()" (keyup.enter)="addEditTodo()" type="submit">
+                               {{inEditMode==false?"ADD":"UPDATE"}} 
+                            </button>
+                            <button *ngIf="inEditMode==true" class="btn btn-danger btn-md btn-block" (click)="cancelEdit()" type="button">
+                                    Cancel
+                            </button>
+                    </div>
+            </div>
+        </form>
+</section>
+<br />
+<section class="listarea">
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngIf="_todoService.todos.length == 0" style="color:#721c24;">You have 0 ToDo's.</div>  
+                <ul class="list-group list-group-flush" *ngIf="_todoService.todos.length > 0" >
+                    
+                    <li class="list-group-item" *ngFor="let todo of _todoService.todos; let i=index" [class.completed]="todo.isCompleted">
+                            <div class="pull-left">
+                                <label class="container capitalize"  [ngClass]="{'todos-complete': todo.isCompleted}">
+                                        <input type="checkbox" (change)="markAsCompleted(todo, $event)" [checked]="todo.isCompleted" [(ngModel)]="todo.isCompleted" >
+                                        <span class="checkmark"></span>
+                                        &nbsp; {{todo.workTodo}}
+                                        
+                                </label>
+                            </div>
+                            <div class="pull-right">
+                                    <button class="btn btn-primary btn-sm fa fa-pencil" (click)="editTodo(todo)"></button> &nbsp;
+                                    <button class="btn btn-danger btn-sm fa fa-trash-o" (click)="deleteTodo(todo,i)"></button>
+                            </div>
+                    </li>
+                     
+                </ul>
+            </div>
+        </div>
+</section>

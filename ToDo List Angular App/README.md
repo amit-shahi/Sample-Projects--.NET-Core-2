@@ -2,6 +2,7 @@
 
 This is an awesome Todo App v1.0 created to share the fun and exciting feature of Angular & .NET Core together to build Single Page Application. The  project was created using following stack:
 
+Demo Link: [https://netcoretodosapp.azurewebsites.net/](https://netcoretodosapp.azurewebsites.net/)
 ## Frontend Technologies
 
 1. Angular 6.0.8

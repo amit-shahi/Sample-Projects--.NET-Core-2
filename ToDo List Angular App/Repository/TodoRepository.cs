@@ -1,7 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System;
-
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 public class TodoRepository : ITodoRepository
 {
     private readonly TodoDbContext _context;
@@ -11,42 +12,42 @@ public class TodoRepository : ITodoRepository
         this._context = context;
     }
 
-    public List<Todo> GetAll()
+    public async Task<List<Todo>> GetAll()
     {
-        return _context.Todos.ToList();
+        return await _context.Todos.ToListAsync();
     }
 
-    public int Add(Todo todo)
+    public async Task<int> Add(Todo todo)
     {
-        _context.Todos.Add(todo);
-        _context.SaveChanges();
+        await _context.Todos.AddAsync(todo);
+        await _context.SaveChangesAsync();
         return todo.Id;
     }
 
-    public bool Update(int Id, Todo newTodo)
+    public async Task<bool> Update(int Id, Todo newTodo)
     {
-        var todo =  _context.Todos.Find(Id);
+        var todo = await _context.Todos.FindAsync(Id);
          todo.WorkTodo = newTodo.WorkTodo;
          todo.IsCompleted = newTodo.IsCompleted;
          todo.CreatedOn = DateTime.Now;
-         _context.SaveChanges();
+         await _context.SaveChangesAsync();
          return true;
     }
 
-    public bool Delete(int Id)
+    public async Task<bool> Delete(int Id)
     {
-       var todo =  _context.Todos.Find(Id);
-       _context.Remove(todo);
-       _context.SaveChanges();
+       var todo = await _context.Todos.FindAsync(Id);
+        _context.Remove(todo);
+       await _context.SaveChangesAsync();
        return true;
     }
 
     
-    public bool MarkCompleted(int Id, bool IsCompleted)
+    public async Task<bool> MarkCompleted(int Id, bool IsCompleted)
     {
-         var todo =  _context.Todos.Find(Id);
+         var todo = await _context.Todos.FindAsync(Id);
          todo.IsCompleted = IsCompleted;
-         _context.SaveChanges();
+         await _context.SaveChangesAsync();
          return true;
     }
 

@@ -20,13 +20,13 @@ namespace ToDo_List_App.Controllers
         }
 
         [HttpGet("[action]")]
-        public IEnumerable<Todo> GetTodos()
+        public async Task<IEnumerable<Todo>> GetTodos()
         {
-           return _todoService.GetAll();
+           return await _todoService.GetAll();
         }
 
         [HttpPost("[action]")]
-        public IActionResult AddTodo([FromBody] TodoAddViewModel todo)
+        public async Task<IActionResult> AddTodo([FromBody] TodoAddViewModel todo)
         {
             if(todo != null)
             { 
@@ -38,24 +38,24 @@ namespace ToDo_List_App.Controllers
                 // }; 
                 var mappedViewModel = _mapper.Map<Todo>(todo); 
  
-                return Ok(_todoService.Add(mappedViewModel));
+                return Ok(await _todoService.Add(mappedViewModel));
             }
             return BadRequest();
         }
 
         [HttpDelete("[action]/{Id}")]
-        public IActionResult DeleteTodo(int Id)
+        public async Task<IActionResult> DeleteTodo(int Id)
         {
             if(Id != 0)
             { 
-                return Ok(_todoService.Delete(Id));
+                return Ok(await _todoService.Delete(Id));
             }
             return BadRequest();
         }
 
 
         [HttpPut("[action]/{Id}")]
-        public IActionResult UpdateTodo(int Id,[FromBody] TodoUpdateViewModel todo)
+        public async Task<IActionResult> UpdateTodo(int Id,[FromBody] TodoUpdateViewModel todo)
         {
             if(Id != 0 && todo != null)
             { 
@@ -68,17 +68,17 @@ namespace ToDo_List_App.Controllers
 
                 var mappedViewModel = _mapper.Map<Todo>(todo);
 
-                return Ok(_todoService.Update(Id,mappedViewModel));
+                return Ok(await _todoService.Update(Id,mappedViewModel));
             }
             return BadRequest();
         }
 
         [HttpPut("[action]/{Id}/{Completed}")]
-        public IActionResult MarkCompleted(int Id,bool Completed)
+        public async Task<IActionResult> MarkCompleted(int Id,bool Completed)
         {
             if(Id != 0)
             { 
-                return Ok(_todoService.MarkCompleted(Id, Completed));
+                return Ok(await _todoService.MarkCompleted(Id, Completed));
             }
             return BadRequest();
         }

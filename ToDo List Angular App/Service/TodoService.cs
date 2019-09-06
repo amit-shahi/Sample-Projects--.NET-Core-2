@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public class TodoService
 {
@@ -9,29 +10,29 @@ public class TodoService
         this._repository = repository;
     }
 
-    public int Add(Todo todo)
+    public async Task<int> Add(Todo todo)
     {
-        return _repository.Add(todo);
+        return await _repository.Add(todo).ConfigureAwait(false);
     }
 
-    public bool Delete(int Id)
+    public async Task<bool> Delete(int Id)
     {
-        return _repository.Delete(Id);
+        return await _repository.Delete(Id).ConfigureAwait(false);
     }
 
-    public List<Todo> GetAll()
+    public async Task<List<Todo>> GetAll()
     {
-       return  _repository.GetAll();
+       return await _repository.GetAll().ConfigureAwait(false);
     }
 
-    public bool MarkCompleted(int Id, bool IsCompleted)
+    public async Task<bool> MarkCompleted(int Id, bool IsCompleted)
     {
-       return _repository.MarkCompleted(Id, IsCompleted);
+       return await _repository.MarkCompleted(Id, IsCompleted).ConfigureAwait(false);
     }
 
-    public bool Update(int Id, Todo todo)
+    public async Task<bool> Update(int Id, Todo todo)
     {
-        return _repository.Update(Id, todo);
+        return await _repository.Update(Id, todo).ConfigureAwait(false);
     }
 
 }

@@ -22,7 +22,7 @@ namespace ToDo_List_App.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Todo>> GetTodos()
         {
-           return await _todoService.GetAll();
+           return await _todoService.GetAll().ConfigureAwait(false);
         }
 
         [HttpPost("[action]")]
@@ -38,7 +38,7 @@ namespace ToDo_List_App.Controllers
                 // }; 
                 var mappedViewModel = _mapper.Map<Todo>(todo); 
  
-                return Ok(await _todoService.Add(mappedViewModel));
+                return Ok(await _todoService.Add(mappedViewModel).ConfigureAwait(false));
             }
             return BadRequest();
         }
@@ -48,7 +48,7 @@ namespace ToDo_List_App.Controllers
         {
             if(Id != 0)
             { 
-                return Ok(await _todoService.Delete(Id));
+                return Ok(await _todoService.Delete(Id).ConfigureAwait(false));
             }
             return BadRequest();
         }
@@ -68,7 +68,7 @@ namespace ToDo_List_App.Controllers
 
                 var mappedViewModel = _mapper.Map<Todo>(todo);
 
-                return Ok(await _todoService.Update(Id,mappedViewModel));
+                return Ok(await _todoService.Update(Id,mappedViewModel).ConfigureAwait(false));
             }
             return BadRequest();
         }
@@ -78,7 +78,7 @@ namespace ToDo_List_App.Controllers
         {
             if(Id != 0)
             { 
-                return Ok(await _todoService.MarkCompleted(Id, Completed));
+                return Ok(await _todoService.MarkCompleted(Id, Completed).ConfigureAwait(false));
             }
             return BadRequest();
         }

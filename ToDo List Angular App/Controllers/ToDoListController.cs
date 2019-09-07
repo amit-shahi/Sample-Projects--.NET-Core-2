@@ -22,6 +22,7 @@ namespace ToDo_List_App.Controllers
         [HttpGet("[action]")]
         public async Task<IEnumerable<Todo>> GetTodos()
         {
+            // Note: If you don't need to return to the calling thread, use .ConfigureAwait(false)
            return await _todoService.GetAll().ConfigureAwait(false);
         }
 

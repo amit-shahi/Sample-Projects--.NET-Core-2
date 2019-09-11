@@ -23,7 +23,7 @@
 <section class="listarea">
         <div class="row">
             <div class="col-md-12">
-                <div *ngIf="_todoService.todos.length == 0" style="color:#721c24;">You have 0 ToDo's.</div>  
+                <div ng-cloak *ngIf="_todoService.todos.length == 0" style="color:#721c24;">You have 0 ToDo's.</div>  
                 <ul class="list-group list-group-flush" *ngIf="_todoService.todos.length > 0" >
                     
                     <li class="list-group-item" *ngFor="let todo of _todoService.todos; let i=index" [class.completed]="todo.isCompleted">

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using ToDo_List_App.Model;
 
 public class TodoDbContext: DbContext
 {

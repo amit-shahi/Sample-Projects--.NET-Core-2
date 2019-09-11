@@ -3,6 +3,8 @@ using System.Linq;
 using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using ToDo_List_App.Model;
+
 public class TodoRepository : ITodoRepository, IDisposable
 {
     private readonly TodoDbContext _context;

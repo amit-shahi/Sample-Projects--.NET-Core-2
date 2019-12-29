@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using ToDo_List_App.ViewModel;
 using System.Threading;
 using Xunit;
+using static System.Console;
 
 namespace ToDoListAngularApp.Tests
 {
@@ -34,7 +35,7 @@ namespace ToDoListAngularApp.Tests
          
 
         [Fact]
-        public async Task Add_New_Item_Should_Return_Integer_Value()
+        public async Task Add_New_Item_Should_Return_An_Inserted_Id()
         {
 
             var controller = new ToDoListController(this._todoService);
@@ -49,6 +50,46 @@ namespace ToDoListAngularApp.Tests
             //Assert.That(result, Is.InstanceOf<OkObjectResult>());
  
             //Assert.AreEqual(result, BadRequest());
+        }
+
+        //[Fact]
+        public async Task Cant_Add_An_Empty_Item()
+        {
+           await Task.Factory.StartNew( () =>  {
+                // TODO 
+                WriteLine("TODO");
+                }
+            );
+        }
+
+        //[Fact]
+        public async Task Add_New_Item_Should_Return_Integer_Value()
+        {
+
+        }
+
+        //[Fact]
+        public async Task Add_New_Item_Should_Return_Integer_Value()
+        {
+
+        }
+
+        //[Fact]
+        public async Task Add_New_Item_Should_Return_Integer_Value()
+        {
+
+        }
+
+        //[Fact]
+        public async Task Add_New_Item_Should_Return_Integer_Value()
+        {
+
+        }
+
+        //[Fact]
+        public async Task Add_New_Item_Should_Return_Integer_Value()
+        {
+
         }
 
 

@@ -26,6 +26,7 @@
     "bootstrap": "^4.4.1",
     "core-js": "^2.6.11",
     "font-awesome": "^4.7.0",
+    "https-proxy-agent": "^5.0.0",
     "rxjs": "^6.5.5",
     "rxjs-compat": "^6.5.5",
     "zone.js": "^0.8.29"
